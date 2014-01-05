@@ -29,6 +29,14 @@ $ cd myproject
 $ pip install -r reqs/dev.txt
 ```
 
+Then initialize the database 
+
+```sh
+$ createdb myproject
+$ python manage.py syncdb
+$ python manage.py migrate
+```
+
 And you're ready to run the server :) `$ python manage.py runserver` or `$ make rs` thanks to some shortcuts defined in the `Makefile`
 
 ## Prod settings
