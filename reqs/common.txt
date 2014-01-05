@@ -1,0 +1,38 @@
+## Basic stack
+Django>=1.5.0,<=1.5.9
+django-celery==3.0.21
+-e git+git://github.com/jezdez/django_compressor.git@develop#egg=django_compressor
+#-e git+git://github.com/dulaccc/django-haystack.git@2324f8a05c286f210ad3c0a8e81f1c9ebab781a7#egg=django-haystack
+django-model-utils==1.5.0
+psycopg2==2.5
+PyYAML==3.10
+requests==1.2.3
+South==0.8.1
+
+
+## Custom
+#django-mptt==0.6.0
+#libsass==0.2.4
+#pyelasticsearch==0.6
+Pillow==2.2.1
+redis==2.8.0
+-e git+git://github.com/dulaccc/sorl-thumbnail.git@master#egg=sorl-thumbnail
+
+
+## Third party helper apps
+
+
+## Utils
+bleach==1.2.2
+django-classy-tags==0.4
+Fabric==1.6.1
+
+
+## Debug
+django-debug-toolbar==0.9.5
+#-e git://github.com/streeter/django-haystack-panel.git@be07054d02810c64296e8ce03a5b5e272e453641#egg=django_haystack_panel-dev
+
+
+## User accounts
+#-e git+git://github.com/dulaccc/django-user-accounts.git@develop#egg=django_user_accounts-dev
+#python-social-auth<=1.0

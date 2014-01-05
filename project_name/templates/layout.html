@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+    {{ block.super }}
+{% endblock %}
+
+{% block layout %}
+<div class="wrapper {%block wrapper-additional-class %}{% endblock %}">
+
+    {% block menu %}
+    <div class="head-top">
+        <div class="navbar">
+            <div class="navbar-inner">
+                <div class="container">
+                    {% include "partials/nav.html" %}
+                </div>
+            </div>
+        </div><!-- /.navbar -->
+    </div>
+    {% endblock menu %}
+    
+    <div class="container {% block container-additional-class %}{% endblock %}">
+        {% include "partials/alert_messages.html" %}
+        {% block flatpage %}{% endblock flatpage %}
+        {% block content %}{% endblock content %}
+    </div>
+
+    {% block footer %}
+        {% include "partials/footer.html" %}
+    {% endblock footer %}
+
+</div><!-- /.wrapper -->
+{% endblock layout %}
+
+{% block extrascripts %}
+    {{ blocl.super }}
+{% endblock extrascripts %}
+
+{% block onbodyload %}
+    {{ block.super }}
+{% endblock onbodyload %}

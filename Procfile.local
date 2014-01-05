@@ -1,0 +1,7 @@
+redis: redis-server
+rabbitmq: rabbitmq-server
+celery: python manage.py celery worker -E --loglevel=INFO
+#elasticsearch: elasticsearch -f -D es.config=elasticsearch.yml
+watch: make cssw
+#db: postgres
+#web: python manage.py runserver

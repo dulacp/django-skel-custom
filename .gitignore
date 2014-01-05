@@ -1,0 +1,80 @@
+### Project specifics ###
+
+#{{ project_name }}/media
+#{{ project_name }}/static
+utils.txt
+
+
+### Sublime Workspace ###
+
+*.sublime-workspace
+
+
+### VirtualEnv & Foreman ###
+
+venv
+.env
+
+
+### Django ###
+ 
+*.log
+*.pot
+
+
+### Celery ###
+
+celerybeat-schedule
+
+
+### Redis local database ###
+
+dump.rdb
+
+
+### Tests & Coverage ###
+
+htmlcov
+.coverage
+.tox
+coverage.xml
+nosetests.xml
+violations.txt
+.jshintrc
+.jshintignore
+
+
+### Sass ###
+
+.sass-cache/
+*.swp
+*.swo
+
+
+### Python ###
+ 
+*.py[cod]
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+#lib
+lib64
+
+# Installer logs
+pip-log.txt
+
+#Translations
+*.mo

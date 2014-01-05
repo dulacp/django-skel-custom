@@ -1,0 +1,55 @@
+{% load compress %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}Home page{% endblock %}</title>
+    {% block extrahead %}{% endblock %}
+
+    <!-- Styles -->
+    {% compress css %}
+        {% block mainstylesheet %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}/css/styles.css" />
+        {% endblock %}
+    {% endcompress %}
+
+    {% block tracking %}
+        {% if GOOGLE_ANALYTICS_ID %}
+            <script type="text/javascript">
+              var _gaq = _gaq || [];
+              _gaq.push(['_setAccount', '{{ GOOGLE_ANALYTICS_ID }}']);
+              _gaq.push(['_setDomainName', 'getcarousel.com']);
+              _gaq.push(['_trackPageview']);
+
+              (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+              })();
+            </script>
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+    {% block layout %}{% endblock %}
+    {% block 404 %}{% endblock %}
+
+    {% compress js %}
+        <script src="{{ STATIC_URL }}js/main.js"></script>
+
+        {% block extrascripts %}{% endblock extrascripts %}
+    {% endcompress %}
+
+    {# Block for body onload functions #}
+    <script type="text/javascript">
+        $(function() {
+            {% block onbodyload %}{% endblock %}
+        });
+    </script>
+</body>
+</html>

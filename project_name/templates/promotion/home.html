@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% load thumbnail %}
+{% load my_filters %}
+
+{% block extrascripts %}
+    {{ block.super }}
+    <!-- <script src="{{ STATIC_URL }}js/carousel.js"></script> -->
+    <script src="{{ STATIC_URL }}js/search_bar.js"></script>
+    <script src="{{ STATIC_URL }}js/promotion_home.js"></script>
+{% endblock %}
+
+{% block carousel %}
+<div id="hero" class="carousel carousel--detached">
+    <div class="carousel__content" style="height:450px">
+        <div class="carousel__slide  active">
+            <img src="{{ STATIC_URL }}img/landing/background_full.jpg" />
+        </div>
+    </div>
+    <div class="carousel__form search-area">
+        <div class="container">
+            <h1>Trouver un dej</h1>
+            <h2>Prenez le réflexe <b>Ledej</b> à Paris</h2>
+            {% include "partials/search_bar.html" with form=search_form %}
+        </div>
+    </div>
+</div>
+{% endblock carousel %}
+
+{% block content %}
+<section class="sec">
+    <h1 class="fancy-title">Les thématiques de Paris</h1>
+    <h2>élaborées par nos soins, choisissez selon l'humeur du jour.</h2>
+</section>
+
+<section class="sec">
+    <div class="gw">
+        {% for thema in thematics %}
+        <div class="g one-third">
+            <div class="thematic">
+                {% thumbnail thema.primary_image "288x160" crop='center' as thumb %}
+                    <div class="thematic__bg" style="background-image:url({{ thumb.url }})"></div>
+                {% endthumbnail %}
+                <div class="thematic__title">
+                    <a href="{% url 'search:faceted-results' %}?q={{ thema.title|urlencode }}">
+                        <h3>{{ thema.title }}</h3>
+                        <span>{{ thema.num_shops }} dej{{ thema.num_shops|pluralize }}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="sec">
+    <div class="gw">
+        <div class="g one-third">
+            <div class="box">
+                <div class="box__header">
+                    <h3 class="box__title">Les plus réservés</h3>
+                </div>
+                <div class="box__content">
+                    <div class="gw">
+                        {% for i in 2|times %}
+                        <div class="g  one-half">
+                            <div class="greybox greybox--medium">
+                                Dej #{{ i }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="box__metadata">
+                    <p><a href="#best">accéder aux autres dejs prisés</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="g one-third">
+            <div class="box">
+                <div class="box__header">
+                    <h3 class="box__title">Les plus favorisés</h3>
+                </div>
+                <div class="box__content">
+                    <div class="gw">
+                        {% for i in 2|times %}
+                        <div class="g  one-half">
+                            <div class="greybox greybox--medium">
+                                Dej #{{ i }}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="box__metadata">
+                    <p><a href="#best">accéder aux autres dejs favoris</a></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="g one-third">
+            <div class="box">
+                <div class="box__header">
+                    <h3 class="box__title">Ajoutez le votre !</h3>
+                </div>
+                <div class="box__content">
+                    <p>Prenez votre destin en main et ajoutez en quelques étapes votre <b>dej</b> à notre catalogue.</p>
+                    <a class="btn btn--cta">Ajouter</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

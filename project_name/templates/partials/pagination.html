@@ -1,0 +1,15 @@
+{% load display_tags %}
+
+<div>
+    <ul class="pager">
+        {% if page_obj.has_previous %}
+		<li class="previous"><a href="?{% get_parameters page %}page={{ page_obj.previous_page_number }}">précédante</a></li>
+        {% endif %}
+		<li class="current">
+		Page {{ page_obj.number }} sur {{ paginator.num_pages }}
+		</li>
+        {% if page_obj.has_next %}
+		<li class="next"><a href="?{% get_parameters page %}page={{ page_obj.next_page_number }}">suivante</a></li>
+        {% endif %}
+    </ul>
+</div>

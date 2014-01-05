@@ -1,0 +1,50 @@
+{% load form_tags %}
+{% load widget_tweaks %}
+
+{# Make the field widget type available to templates #}
+{% annotate_form_field field %}
+
+<div class="control-group {% for error in field.errors %}error{% endfor %}">
+    {% if field.is_hidden %}
+        {{ field }}
+    {% else %}
+		{# Check if field is a checkbox as we mark these up differently #}
+		{% if field.widget_type == 'CheckboxInput' %}
+			<div class="controls">
+    			<label for="{{ field.auto_id }}" class="label label--checkbox {% if field.field.required %}label--required{% endif %}">{{ field.label }}{% if field.field.required %} <span>*</span>{% endif %}
+    				{{ field }}
+    			</label>
+				{% for error in field.errors %}
+					<p class="alert alert--error">{{ error }}</p>
+				{% endfor %}
+				{% if field.help_text %}
+					<small class=extra-help>
+						{# We allow HTML within form help fields #}
+						{{ field.help_text|safe }}
+					</small>
+				{% endif %}
+			</div>
+		{% else %}
+			<label for="{{ field.auto_id }}" class="label {% if field.field.required %}label--required{% endif %}">{{ field.label }}{% if field.field.required %} <span>*</span>{% endif %}</label>
+			<div class="controls">
+				{% if field.widget_type in 'TextInput|PasswordInput|DateInput|DateTimeInput|TimeInput|Textarea' %}
+					{{ field|add_class:"text-input" }}
+				{% elif field.widget_type in 'FileInput' %}
+					{{ field|add_class:"file-input" }}
+				{% else %}
+					{{ field }}
+				{% endif %}
+
+				{% for error in field.errors %}
+					<p class="alert alert--error">{{ error }}</p>
+				{% endfor %}
+				{% if field.help_text %}
+					<small class=extra-help>
+						{# We allow HTML within form help fields #}
+						{{ field.help_text|safe }}
+					</small>
+				{% endif %}
+			</div>
+		{% endif %}
+    {% endif %}
+</div>
