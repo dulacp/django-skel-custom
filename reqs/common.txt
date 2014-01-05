@@ -29,7 +29,7 @@ Fabric==1.6.1
 
 
 ## Debug
-django-debug-toolbar==0.9.5
+django-debug-toolbar<=1.0
 #-e git://github.com/streeter/django-haystack-panel.git@be07054d02810c64296e8ce03a5b5e272e453641#egg=django_haystack_panel-dev
 
 

@@ -23,7 +23,7 @@ register.tag(QueryParameters)
 
 class GetParameters(Tag):
     """
-    {% get_parameters [except_field, ] %}
+    {# get_parameters [except_field, ] #}
     """
     name = 'get_parameters'
     options = Options(
