@@ -214,7 +214,6 @@ LOCAL_APPS = (
     'libs',
 
     'apps.promotion',
-    'apps.catalogue',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
