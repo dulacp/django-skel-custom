@@ -5,22 +5,5 @@
 		<div class="logo-wrapper">
 			<a href="/" class="logo" title="retournez à l'accueil">Ledej</a>
 		</div>
-		<div class="nav__items">
-			<ul id="main-menu" class="nav nav--fit nav--block nav--banner">
-				<li class="{% active request 'recherche/' %}"><a href="{% url 'search:faceted-results' %}">Trouver un dej !</a></li>
-				<li class="{% active request 'app/' %}"><a href="">App</a></li>
-				<li class="{% active request 'how/' %}"><a href="#">Comment ça marche ?</a></li>
-				<li class="{% active request 'support/' %}"><a href="#">F.A.Q.</a></li>
-				<!-- <li class="{% active request 'me/' %}"><a href="{% url 'auth_login' %}">Mon compte</a></li> -->
-			</ul>
-		</div>
-
-		<div class="account">
-		{% if user.is_authenticated %}
-	        <a href="{% url 'user-home' %}">{{ user.username }}</a> | <a href="{% url 'auth_logout' %}">déconnexion</a>
-	    {% else %}
-	        <a href="{% url 'auth_login' %}">connexion</a>
-	    {% endif %}
-		</div>
 	</div>
 </div>
